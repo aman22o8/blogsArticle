@@ -13,6 +13,7 @@ const Login = () => {
     const dispatch=useDispatch()
     const {register,handleSubmit}=useForm()
     const [error,setError]=useState('')
+   
 
     const login= async (data)=>{
         setError("")
@@ -20,8 +21,10 @@ const Login = () => {
           const session=  await authService.logIn(data)
           if (session) {
             const userData= await authService.getCurrentUser()
+            // console.log('getting user data in login',userData)
             if(userData){
                 dispatch(authLogin(userData))
+                //console.log(authLogin(userData)) gives output in {type:"",payload:""}
                 navigate('/') //isse programitically kahi bhi bhej skte hai
             }
             

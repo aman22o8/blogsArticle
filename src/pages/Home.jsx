@@ -6,7 +6,9 @@ import { useSelector } from "react-redux";
 const Home = () => {
   const [posts, setposts] = useState([]);
   const mystatus = useSelector((state) => state.status);
+ 
   console.log("my home pr jo state hai ", mystatus);
+
   useEffect(() => {
     service.getPosts().then((posts) => {
       if (posts) {
@@ -46,6 +48,7 @@ const Home = () => {
     return (
       <div className="w-full py-8">
         <Container>
+            <h1 className="text-center underline text-2xl font-semibold my-3">All active Blogs are shown here</h1>
           <div className="flex flex-wrap">
             {posts.map((post) => (
               <div key={post.$id} className="p-2 w-1/4 max-w-[230px] max-sm:w-[180px]">

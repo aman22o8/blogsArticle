@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { Button, Container } from '../components'
 import service from '../appwrite/mainconfig'
@@ -13,18 +13,22 @@ const Post = () => {
     const [isLoading, setisLoading] = useState(false)
     // console.log("my slug",slug)
     const navigate = useNavigate();
+    
+    
     const userData = useSelector((state) => state.userData);
-    // console.log('user data',userData)
+    const userState = useSelector((state) => state);
+    console.log('user data1',userState)
 
     
     
-
-    useEffect(() => {
+// useLayoutEffect
+useEffect(() => {
         if (slug) {
             service.getPost(slug).then((post) => {
                 setisLoading(true)
                 if (post) {
-                    // console.log("post",post)
+                    console.log("we r in post component",post)
+                    console.log("r u getting user data",userData)
                     setPost(post);
                     const isAuthor = post && userData ? post.userId === userData.$id : false;
                     setauthorAuth(isAuthor)
@@ -34,7 +38,7 @@ const Post = () => {
                 else navigate("/");
             });
         } else navigate("/");
-    }, [slug, navigate]);
+    }, [slug, navigate,authorAuth]);
 
     const deletePost = () => {
         service.deletePost(post.$id).then((status) => {
