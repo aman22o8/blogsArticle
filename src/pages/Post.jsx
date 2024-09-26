@@ -5,6 +5,7 @@ import service from '../appwrite/mainconfig'
 import parse from 'html-react-parser'
 import { useSelector } from 'react-redux'
 
+//we ca n use  useLayoot hook aswell
 
 const Post = () => {
     const [post, setPost] = useState(null);
