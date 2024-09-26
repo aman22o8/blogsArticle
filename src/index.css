@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* 
+html,body,#root{
+  box-sizing: border-box;
+   height: 100%; 
+  width: 100%;
+  background-color: aqua;
+  
+}
+*/
+
+*{
+  box-sizing: border-box;
+  
+}
