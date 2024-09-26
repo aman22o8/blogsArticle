@@ -5,9 +5,9 @@ import './index.css'
 import { Provider } from 'react-redux'
 import store from './store/store.js'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { Protected,Login} from './components/index.js'
+import { Protected,Login, SignUp} from './components/index.js'
 import Home from './pages/Home.jsx'
-import Signup from './pages/SignUp.jsx'
+// import Signup from './pages/SignUp.jsx'
 import AddPost from './pages/AddPost.jsx'
 import AllPosts from './pages/AllPosts.jsx'
 import Post from './pages/Post.jsx'
@@ -38,7 +38,7 @@ const router=createBrowserRouter([
         path:'/signup',
         element:(
           <Protected authentication={false}>
-            <Signup/>
+            <SignUp/>
           </Protected>
         )
       },
